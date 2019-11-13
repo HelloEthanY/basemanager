@@ -9,14 +9,17 @@
                 </div>
             </el-container>
             <el-container style="height:95% ;width: 100%" direction="horizontal">
-                <el-container style="width: 28%;height: 100%;">
+                <el-container direction="vertical" style="width: 24%;height: 100%;">
                     <left-top-content></left-top-content>
+                    <left-bottom-content></left-bottom-content>
                 </el-container>
-                <el-container style="width: 44%;height: 100%;">
-
+                <el-container direction="vertical" style="width: 52%;height: 100%;">
+                    <center-top-content></center-top-content>
+                    <center-bottom-content></center-bottom-content>
                 </el-container>
-                <el-container style="width: 28%;height: 100%;background-color: black">
-
+                <el-container direction="vertical" style="width: 24%;height: 100%;">
+                    <right-top-content></right-top-content>
+                    <right-bottom-content></right-bottom-content>
                 </el-container>
             </el-container>
         </el-container>
@@ -66,6 +69,11 @@
 <script>
 
     import LeftTopContent from '../../components/homepage/LeftTopContent'
+    import LeftBottomContent from '../../components/homepage/LeftBottomContent'
+    import RightTopContent from '../../components/homepage/RightTopContent'
+    import RightBottomContent from '../../components/homepage/RightBottomContent'
+    import CenterBottomContent from '../../components/homepage/CenterBottomContent'
+    import CenterTopContent from '../../components/homepage/CenterTopContent'
 
     export default {
         name: "HomePage",
@@ -75,7 +83,12 @@
             }
         },
         components: {
-            LeftTopContent
+            LeftTopContent,
+            LeftBottomContent,
+            RightTopContent,
+            RightBottomContent,
+            CenterBottomContent,
+            CenterTopContent
         },
         beforeDestroy: function () {
             //实例销毁前青出于定时器

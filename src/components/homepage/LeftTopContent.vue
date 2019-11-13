@@ -1,13 +1,15 @@
 <!--homePage 左边顶部内容-->
 <template>
-    <div class="left-top-wrapper">
+    <div class="homepage-left-top-wrapper">
         <el-container direction="vertical" style="width: 100%">
             <!--线性图-->
             <div id="line-chart" style="width: 100%;height: 33%;margin-top: 10px"></div>
+            <div style="width: 100%;height: 1px;background-color: #369;margin-bottom: 10px"></div>
             <!--柱状图-->
-            <div id="column-chart" style="width: 100%;height: 33%;margin-top: 10px"></div>
+            <div id="column-chart" style="width: 100%;height: 33%"></div>
+            <div style="width: 100%;height: 1px;background-color: #369;margin-bottom: 10px"></div>
             <!--饼状图-->
-            <div id="bread-chart" style="width: 100%;height: 33%;margin-top: 10px"></div>
+            <div id="bread-chart" style="width: 100%;height: 33%;"></div>
         </el-container>
     </div>
 </template>
@@ -322,7 +324,7 @@
 </script>
 
 <style lang="scss">
-    .left-top-wrapper {
+    .homepage-left-top-wrapper {
         height: 70%;
         width: 92%;
       //  background-color: rgba(20, 60, 98, 0.6);
