@@ -1,7 +1,12 @@
 // const BASE_URL = "http://47.105.71.81:3306/";
 
 module.exports = {
-   // publicPath: BASE_URL,  // 设置baseUrl
+    configureWebpack: {
+        externals: {
+            "BMap": "BMap"
+        }
+    },
+    // publicPath: BASE_URL,  // 设置baseUrl
     lintOnSave: false,   // 关闭eslint
     devServer: {
         overlay: {// 关闭eslint

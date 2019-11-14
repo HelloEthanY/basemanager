@@ -189,9 +189,9 @@
 <style lang="scss">
 
     .homepage-center-bottom-wrapper {
-        height: 29%;
+        height: 30%;
         width: 98%;
-        margin: 2% 1%;
+        margin: 1% 1%;
         padding: 0;
 
         .center-bottom-content-left {

@@ -9,9 +9,13 @@ import 'element-ui/lib/theme-chalk/index.css';
 import JsBridge from './config/JSbridge.js'
 import echarts from 'echarts'
 import axios from 'axios'
+// 引入百度地图
+import BaiduMap from 'vue-baidu-map';
 
+Vue.use(BaiduMap, {
+    ak: "yzob0doDU75trAA7KLOg3F0GDYuxC6Ca"
+});
 Vue.prototype.$bridge = JsBridge;
-
 Vue.prototype.$axios = axios;
 Vue.prototype.$echarts = echarts;
 Vue.config.productionTip = false;

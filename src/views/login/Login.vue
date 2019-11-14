@@ -45,7 +45,6 @@
     </div>
 </template>
 
-
 <style lang="scss">
     /* 结束 */
     .login-wrapper {
@@ -93,6 +92,7 @@
 
                 .btn-register a {
                     text-decoration: none;
+                    color: #50C6E8;
                 }
 
                 .layui-input {
@@ -161,6 +161,8 @@
                         message: '验证码为空！',
                         type: 'error'
                     });
+                    _this.form.username = '';
+                    _this.form.password = '';
                     // 显示弹出框
                 } else if (code === num) {
                     if (userName === '') {
@@ -222,6 +224,8 @@
                         message: '验证码错误！',
                         type: 'error',
                     });
+                    _this.form.username = '';
+                    _this.form.password = '';
                     _this.inputCode = '';
                     _this.draw(show_num);
                 }

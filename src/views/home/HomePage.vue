@@ -14,7 +14,8 @@
                     <left-bottom-content></left-bottom-content>
                 </el-container>
                 <el-container direction="vertical" style="width: 52%;height: 100%;">
-                    <center-top-content></center-top-content>
+                    <!--百度地图-->
+                    <div style=" height: 64%;width: 98%;margin: 1%;" id="container"></div>
                     <center-bottom-content></center-bottom-content>
                 </el-container>
                 <el-container direction="vertical" style="width: 24%;height: 100%;">
@@ -67,13 +68,13 @@
 
 </style>
 <script>
+    import BMap from 'BMap'
 
     import LeftTopContent from '../../components/homepage/LeftTopContent'
     import LeftBottomContent from '../../components/homepage/LeftBottomContent'
     import RightTopContent from '../../components/homepage/RightTopContent'
     import RightBottomContent from '../../components/homepage/RightBottomContent'
     import CenterBottomContent from '../../components/homepage/CenterBottomContent'
-    import CenterTopContent from '../../components/homepage/CenterTopContent'
 
     export default {
         name: "HomePage",
@@ -87,8 +88,7 @@
             LeftBottomContent,
             RightTopContent,
             RightBottomContent,
-            CenterBottomContent,
-            CenterTopContent
+            CenterBottomContent
         },
         beforeDestroy: function () {
             //实例销毁前青出于定时器
@@ -102,8 +102,20 @@
             this.timeId = setInterval(function () {
                 _this.date = _this.getHomeNowTime();
             }, 1000);
+            // 加载百度地图
+            this.loadBaiduMap();
         },
         methods: {
+            // 加载百度地图
+            loadBaiduMap() {
+                let map = new BMap.Map("container");
+                // 创建地图实例
+                var point = new BMap.Point(116.404, 39.915);
+                // 创建点坐标
+                map.centerAndZoom(point, 15);
+                map.enableScrollWheelZoom(true);
+                map.enableDragging();
+            },
             // 获取当前时间
             getHomeNowTime() {
                 let _this = this;
