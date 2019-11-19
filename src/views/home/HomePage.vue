@@ -15,7 +15,8 @@
                 </el-container>
                 <el-container direction="vertical" style="width: 52%;height: 100%;">
                     <!--百度地图-->
-                    <div style=" height: 64%;width: 98%;margin: 1%;" id="container"></div>
+                    <div class="baidu-map-container" id="container"></div>
+                    <!-- <center-top-content></center-top-content>-->
                     <center-bottom-content></center-bottom-content>
                 </el-container>
                 <el-container direction="vertical" style="width: 24%;height: 100%;">
@@ -64,6 +65,19 @@
                 /*结束*/
             }
         }
+        /*百度地图样式*/
+        .baidu-map-container {
+            height: 64%;
+            width: 98%;
+            margin: 1%;
+            border-radius: 3px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border: 1px solid #006B9D;
+            // 去掉百度地图logo
+            .anchorBL {
+                display: none;
+            }
+        }
     }
 
 </style>
@@ -75,6 +89,10 @@
     import RightTopContent from '../../components/homepage/RightTopContent'
     import RightBottomContent from '../../components/homepage/RightBottomContent'
     import CenterBottomContent from '../../components/homepage/CenterBottomContent'
+    //import CenterTopContent from '../../components/homepage/CenterTopContent'
+    // 导入百度地图个性化json数据文件
+    import mapJS from '../../../public/static/custom_map_config.json'
+
 
     export default {
         name: "HomePage",
@@ -88,7 +106,8 @@
             LeftBottomContent,
             RightTopContent,
             RightBottomContent,
-            CenterBottomContent
+            CenterBottomContent,
+            // CenterTopContent
         },
         beforeDestroy: function () {
             //实例销毁前青出于定时器
@@ -108,13 +127,26 @@
         methods: {
             // 加载百度地图
             loadBaiduMap() {
+                // 创建百度地图实例
                 let map = new BMap.Map("container");
-                // 创建地图实例
-                var point = new BMap.Point(116.404, 39.915);
-                // 创建点坐标
-                map.centerAndZoom(point, 15);
+                /***********创建一个全景控制器*************/
+                let stCtrl = new BMap.PanoramaControl();
+                stCtrl.setOffset(new BMap.Size(20, 20));
+                // 对地图设置全景控制器
+                map.addControl(stCtrl);
+                // 创建地图坐标点实例
+                let point = new BMap.Point(106.634291, 26.406715);
+                // 设置地图中心点及缩放比例
+                map.centerAndZoom(point, 7);
+                // 设置通过滑动鼠标收缩地图大小
                 map.enableScrollWheelZoom(true);
+                // 设置能移动地图，默认能移动
                 map.enableDragging();
+                // 设置个性化地图ID和json样式
+                map.setMapStyleV2({
+                    styleId: 'affb66a97d9134caa00a7a7713efef88',
+                    styleJson: mapJS
+                });
             },
             // 获取当前时间
             getHomeNowTime() {
